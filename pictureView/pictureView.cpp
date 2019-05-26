@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
@@ -14,23 +14,23 @@ int main() {
 	int n = 1,c;
 	char str[100];
 	FILE *readfile;
-	// »æÍ¼»·¾³³õÊ¼»¯
+	// ç»˜å›¾ç¯å¢ƒåˆå§‹åŒ–
 	initgraph(1280, 720);
-	system("dir \"D:\\miku\" /b /s > dir.txt");//¶ÁÈ¡Ä¿Â¼
+	system("dir \"D:\\miku\" /b /s > dir.txt");//è¯»å–ç›®å½•
 	if ((readfile = fopen("dir.txt", "r")) == NULL) {
-		printf("¶ÁÈ¡Ä¿Â¼Ê§°Ü");
+		printf("è¯»å–ç›®å½•å¤±è´¥");
 		_getch();
 		return 1;
 	}
 
 	while (c=getdir(str,readfile)){
 		if (c == -1)continue;
-		loadimage(&img, str, 0, 0, true);//¶ÁÈ¡Í¼Æ¬
-		if (img.getwidth() >= 1280)//µ÷ÕûÍ¼Æ¬´óĞ¡
+		loadimage(&img, str, 0, 0, true);//è¯»å–å›¾ç‰‡
+		if (img.getwidth() >= 1280)//è°ƒæ•´å›¾ç‰‡å¤§å°
 			loadimage(&img, str, 1280, img.getheight() * 1280 / img.getwidth(), true);
 		if (img.getheight() >= 720)
 			loadimage(&img, str, img.getwidth() * 720 / img.getheight(), 720, true);
-		cleardevice();//Çå³ı»­Ãæ ×¼±¸ÏÔÊ¾Í¼Æ¬
+		cleardevice();//æ¸…é™¤ç”»é¢ å‡†å¤‡æ˜¾ç¤ºå›¾ç‰‡
 
 		putimage(0, 0, &img);
 		n++;
@@ -48,7 +48,7 @@ int getdir(char *a,FILE *b) {
 	int d = 0;
 	
 	for (char c; (c = fgetc(b)) != '\n'&&d < 100; d++) {
-		if (feof(b) != 0)//ÅĞ¶ÏÒ»ÏÂÊÇ·ñÎÄ¼şÎ²
+		if (feof(b) != 0)//åˆ¤æ–­ä¸€ä¸‹æ˜¯å¦æ–‡ä»¶å°¾
 			return 0;
 		a[d] = c;
 	}
